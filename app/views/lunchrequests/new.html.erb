@@ -1,0 +1,14 @@
+
+
+<div>
+    <%= form_tag('/lunchrequests', method: :post) do %>
+     <h3>
+      投稿する
+    </h3>
+    <input type="date" name="date">
+    <input type="time" name="time">
+    <input type="string" name="place">
+    <input type="integer" name="people">
+      <input type="submit">
+    <% end %>
+  </div>

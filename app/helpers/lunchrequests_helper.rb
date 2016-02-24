@@ -1,0 +1,2 @@
+module LunchrequestsHelper
+end

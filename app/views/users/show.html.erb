@@ -1,0 +1,10 @@
+
+    <!-- <p><%= @nickname %>さんの投稿一覧</p> -->
+    <% @lunchrequests.each do |lunchrequest| %>
+       <p><%= lunchrequest.date %></p>
+    <p><%= lunchrequest.time %></p>
+    <p><%= lunchrequest.place %></p>
+    <p><%= lunchrequest.pepole %></p>
+    <% end %>
+    
+  </div>

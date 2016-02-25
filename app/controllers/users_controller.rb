@@ -12,6 +12,11 @@ def show
     current_user.update(update_params)
   end
 
+  def like
+    user = User.find(params[:id])
+    user.increment_like!
+  end
+
   private
   def update_params
     params.require(:user).permit(:name, :sex, :department, :message, :avatar)

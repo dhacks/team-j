@@ -6,6 +6,13 @@ class User < ActiveRecord::Base
   end
 
 
+# データベースに1足して、更新する作業
+  def increment_like!
+    incremented_like = like + 1
+    update({like: incremented_like})
+  end
+
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

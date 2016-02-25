@@ -6,7 +6,7 @@
 	<div class="form-group">
 		<label class="col-sm-2 control-label" for="username">なまえ</label>
 	    <div class="col-sm-10">
-	      <input type="text" class="form-control" id="username"/>
+	      <input type="text" class="form-control" id="username" value="<%= current_user.name %>" />
 	    </div>
 	</div>
 	<div class="form-group">
@@ -29,7 +29,7 @@
 </form>
 <div id="chat" class="well" data-uri="<%= request.host %>:<%= request.port %>/websocket">
 <% @messages.each do |ms| %>
-    <a><%= ms.message %><%= ms.message %></a><br>
+<a><%= ms.own_name %> : <%= ms.message %></a><br>
 <% end %>
 
 </div>

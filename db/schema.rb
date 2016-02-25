@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225123130) do
+ActiveRecord::Schema.define(version: 20160225170206) do
 
   create_table "chats", force: :cascade do |t|
     t.integer  "man_id",     limit: 4
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20160225123130) do
     t.integer  "group_id",   limit: 4
     t.string   "message",    limit: 255
     t.datetime "ms_time"
+    t.integer  "own_id",     limit: 4
+    t.string   "own_name",   limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end

@@ -5,11 +5,15 @@ one:
   woman_id: 1
   group_id: 1
   message: MyString
-  ms_time: 2016-02-25 21:31:30
+  ms_time: 2016-02-26 02:02:09
+  own_id: 1
+  own_name: MyString
 
 two:
   man_id: 1
   woman_id: 1
   group_id: 1
   message: MyString
-  ms_time: 2016-02-25 21:31:30
+  ms_time: 2016-02-26 02:02:09
+  own_id: 1
+  own_name: MyString

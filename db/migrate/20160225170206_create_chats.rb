@@ -6,6 +6,8 @@ class CreateChats < ActiveRecord::Migration
       t.integer :group_id
       t.string :message
       t.datetime :ms_time
+      t.integer :own_id
+      t.string :own_name
 
       t.timestamps null: false
     end

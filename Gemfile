@@ -51,4 +51,5 @@ end
   gem 'devise'
   gem 'paperclip'
   gem 'rmagick'
+  gem 'ransack'
 

@@ -5,6 +5,7 @@ class LunchrequestsController < ApplicationController
 
   def index
     @lunchrequests = Lunchrequest.all
+  
   end
 
   def new 

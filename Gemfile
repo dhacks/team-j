@@ -53,3 +53,9 @@ end
   gem 'rmagick'
   gem 'ransack'
 
+
+
+#add
+gem 'websocket-rails'
+gem 'faye-websocket', '0.10.0' 
+

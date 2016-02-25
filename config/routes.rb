@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get   'users/:id'          => 'users#show'
   get   'lunchrequests/:id'  => 'lunchrequests#show'
   patch 'users/like/:id' => 'users#like'
+  get   'chat'               => 'chat#chat'
   
 
   # The priority is based upon order of creation: first created -> highest priority.

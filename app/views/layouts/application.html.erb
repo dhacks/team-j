@@ -28,7 +28,7 @@
           <li><%= link_to "プロフィール編集", edit_user_path(current_user) %></li>
 
         <!--   追加         -->
-            <li>Chat link : <%= link_to "1", chat_path(:man_id => 1, :woman_id => current_user.id) %> <%= link_to "2", chat_path(:man_id => current_user.id, :woman_id => 2) %></li>
+            <li>Chat link : <%= link_to "1", chat_path(:man_id => 1, :woman_id => current_user.id) %> <%= link_to "2", chat_path(:man_id => current_user.id, :woman_id => 2) %> <%= link_to "3", chat_path(:man_id => current_user.id, :woman_id => 3) %></li>
 
         </div>
 

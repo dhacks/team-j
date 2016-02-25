@@ -49,4 +49,6 @@ end
   gem 'compass-rails','~> 2.0'
   gem 'sprockets'
   gem 'devise'
+  gem 'paperclip'
+  gem 'rmagick'
 

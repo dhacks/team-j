@@ -5,6 +5,11 @@
     <div class="header__bar row">
       <h1 class="grid-6"><a href="/">Pink</a></h1>
 
+
+
+
+
+
       <% if user_signed_in? %>
         <div class="user_nav grid-6">
           <span><%= current_user.id %>
@@ -13,7 +18,17 @@
                 <a href="/users/<%= current_user.id %>">マイページ</a>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
           <a class="post" href="/lunchrequests/new">投稿する</a>
+
+
+          <li><%= link_to "プロフィール編集", edit_user_path(current_user) %></li>
+
         </div>
+
+
+
+
+
+
 
       <% else %>
         <div class="grid-6">

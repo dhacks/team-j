@@ -1,10 +1,31 @@
 
     <!-- <p><%= @nickname %>さんの投稿一覧</p> -->
-    <% @lunchrequests.each do |lunchrequest| %>
+
+    <p>プロフィールの表示だぜ〜〜〜〜</p>
+
+<!-- ログインしている人にはプロフィール編集リンク表示する -->
+    <% if current_user.id == @user.id %>
+      <div class="profile_edit">
+        <%= link_to "プロフィール編集", edit_user_path(current_user), {:class => "btn btn-primary withripple" } %>
+      </div>
+    <% end %>
+
+<!--アヴァター -->
+    <!--<div class="image" style="background-image: url(<%= @user.avatar.url(:medium) %>);"></div>-->
+
+    <img src="<%= @user.avatar.url(:medium) %>">s
+
+
+
+
+    <h2><%= "#{@user.name}" %><span><%= "#{@user.sex}" %></span><span><%= "#{@user.department}" %></span><span><%= "#{@user.message}" %></span></h2>
+  </div>
+
+<% @lunchrequests.each do |lunchrequest| %>
        <p><%= lunchrequest.date %></p>
     <p><%= lunchrequest.time %></p>
     <p><%= lunchrequest.place %></p>
     <p><%= lunchrequest.pepole %></p>
     <% end %>
     
-  </div>
+

@@ -1,4 +1,13 @@
-<p>Hello World!</p>
+  <p>----------------------------------------------</p>
+
+<% unless current_user.full_profile? %>
+    <h2>まずは、あなたの基本プロフィールを登録しましょう！</h2>
+    <%= link_to "プロフィールを登録する", edit_user_path(current_user), { class: "btn btn-lg btn-primary withripple" } %>
+  <% else %>
+
+<% end %>
+
+
 
 
   <% @lunchrequests.each do |lunchrequest| %>
@@ -8,4 +17,3 @@
     <p><%= lunchrequest.pepole %></p>
   <% end %>
 </div>
-

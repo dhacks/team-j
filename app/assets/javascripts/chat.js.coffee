@@ -20,7 +20,11 @@ class @ChatClass
     user_name = $('#username').val()
     msg_body = $('#msgbody').val()
     group_id = $('#group_id').val()
-    @dispatcher.trigger 'new_message', { name: user_name , body: msg_body , group_id: group_id}
+    man_id = $('#man_id').val()
+    woman_id = $('#woman_id').val()
+    own_id = $('#own_id').val()
+    own_name = $('#own_name').val()
+    @dispatcher.trigger 'new_message', { name: user_name , body: msg_body , group_id: group_id, man_id: man_id, woman_id: woman_id, own_id: own_id, own_name: own_name}
     $('#msgbody').val('')
 
   receiveMessage: (message) =>

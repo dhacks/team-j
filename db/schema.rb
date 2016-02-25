@@ -11,16 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225094847) do
+ActiveRecord::Schema.define(version: 20160225123130) do
 
   create_table "chats", force: :cascade do |t|
-    t.integer  "man_id",       limit: 4
-    t.integer  "woman_id",     limit: 4
-    t.integer  "group_id",     limit: 4
-    t.string   "message",      limit: 255
-    t.datetime "message_time"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.integer  "man_id",     limit: 4
+    t.integer  "woman_id",   limit: 4
+    t.integer  "group_id",   limit: 4
+    t.string   "message",    limit: 255
+    t.datetime "ms_time"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "likes", force: :cascade do |t|

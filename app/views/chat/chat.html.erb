@@ -1,5 +1,7 @@
 <h1>ちゃっと</h1>
-<a>id = <%= @g_id %></a>
+<a>man = <%= @man_name %></a>
+<a>woman = <%= @woman_name %></a>
+
 <form class="form-horizontal">
 	<div class="form-group">
 		<label class="col-sm-2 control-label" for="username">なまえ</label>
@@ -26,6 +28,9 @@
 	</div>
 </form>
 <div id="chat" class="well" data-uri="<%= request.host %>:<%= request.port %>/websocket">
-test:test<br/>
+<% @messages.each do |ms| %>
+    <a><%= ms.message %><%= ms.message %></a><br>
+<% end %>
+
 </div>
 

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get   'lunchrequests/new'  => 'lunchrequests#new'
   post  'lunchrequests'      => 'lunchrequests#create'
   get   'users/:id'          => 'users#show'
-
+  get   'lunchrequests/:id'  => 'lunchrequests#show'
   
 
   # The priority is based upon order of creation: first created -> highest priority.

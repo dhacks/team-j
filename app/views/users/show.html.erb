@@ -13,7 +13,7 @@
 <!--アヴァター -->
     <!--<div class="image" style="background-image: url(<%= @user.avatar.url(:medium) %>);"></div>-->
 
-    <img src="<%= @user.avatar.url(:medium) %>">s
+    <img src="<%= @user.avatar.url(:medium) %>">
 
 
 
@@ -22,7 +22,7 @@
   </div>
 
 <% @lunchrequests.each do |lunchrequest| %>
-       <p><%= lunchrequest.date %></p>
+    <p><%= lunchrequest.date %></p>
     <p><%= lunchrequest.time %></p>
     <p><%= lunchrequest.place %></p>
     <p><%= lunchrequest.pepole %></p>

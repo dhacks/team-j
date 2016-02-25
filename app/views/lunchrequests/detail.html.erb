@@ -1,0 +1,25 @@
+
+
+<br><br><br>
+  <p>--------------------------------------</p>
+  <p>-------------イベント詳細ページだよん-------------------</p>
+
+
+
+  <p><イベント詳細></p>
+
+<%= @lunchrequest.date %>
+<%= @lunchrequest.time %>
+<%= @lunchrequest.place %>
+<%= @lunchrequest.pepole %>
+
+
+  <p><〇〇さんのプロフィール></p>
+
+  <% user = User.find(@lunchrequest.user_id) %>
+
+
+   <p><%= user.name %></p>
+   <p><%= user.sex %></p>
+     <p><%= user.department %></p>
+      <p><%= user.message %></p>

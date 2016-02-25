@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
+  has_one :lunchrequest
 
-   def full_profile?
+  def full_profile?
     avatar? && name? && sex && department && message?
   end
 

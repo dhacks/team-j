@@ -9,12 +9,63 @@
 
 
 
+<%# form_for の代わりに search_form_for を使うことで検索フォームを作成 %>
+<%= search_form_for @q do |f| %>
+
+  <%# start 特定の文字列で始まる商品名で検索 %>
+  <%= f.label :date_eq, "日付" %>
+  <%= f.date_select :date_eq,{start_year: 1900, include_blank: true} %>
+  <br />
+
+  <%# cont 文字列が含まれる商品説明で検索（not_cont で含まれない商品説明） %>
+  <%= f.label :time_gteq, "開始時間" %>
+  <%= f.time_select :time_gteq, {include_blank: true} %>
+  <br />
+
+  <%= f.label :time_lteq, "終了時間" %>
+  <%= f.time_select :time_lteq, {include_blank: true} %>
+  <br />
+
+  <%# 関連の名前で検索 Product.carrier.name %>
+  <%= f.label :place_eq, "場所" %>
+  <%= f.search_field :place_cont %>
+  <br />
+
+  <%# lt で特定の数値より下で検索（gt はより上、eq は同じ、gteqやlteqなどもできる） %>
+  <%= f.label :pepole_eq, "人数" %>
+  <%= f.search_field :pepole_eq %>
+  <br />
+
+ 
+
+  <%# 検索ボタン %>
+  <%= f.submit %>
+<% end %>
+
+<hr />
+
+<table>
 
 
-  <% @lunchrequests.each do |lunchrequest| %>
+
+
+
+
+
+  <% @products.each do |lunchrequest| %>
+    <p><%= lunchrequest.user_id %></p>
     <p><%= lunchrequest.date %></p>
     <p><%= lunchrequest.time %></p>
     <p><%= lunchrequest.place %></p>
     <p><%= lunchrequest.pepole %></p>
+    <p><%= lunchrequest.user %></p>
+    <% if !lunchrequest.user_id.nil? %>
+      <% user = User.find(lunchrequest.user_id) %>
+
+<%= link_to(image_tag(user.avatar.url(:medium)), "lunchrequests/#{lunchrequest.id}") %>
+
+
+      <p><<%= image_tag user.avatar.url(:medium) %></p>
+    <% end %>
   <% end %>
 </div>

@@ -1,50 +1,295 @@
 
-<%# form_for の代わりに search_form_for を使うことで検索フォームを作成 %>
-<%= search_form_for @q do |f| %>
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                    <title>home</title>
+                    
+                    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+                    <script src="js/bootstrap.js"></script>
+                    
+                    <!-- Bootstrap core CSS -->
+                    <link href="css/bootstrap.css" rel="stylesheet">
+                        
+                        <!-- Google Web Fonts CSS -->
+                        <link href="http://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet">
+                            
+                            <!-- Original CSS -->
+                            <link href="css/styles.css" rel="stylesheet">
+                                
+                                <!--[if lt IE 9]>
+                                 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+                                 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+                                 <![endif]-->
+                                
+    </head>
+    <body>
+        
+        <script>
+            $(function(){
+              $('.content:not(.content:first-of-type)').css('display','none');
+              $('.more').nextAll('.more').css('display', 'none');
+              $('.more').on('click', function(){
+                            $(this).css('display','none');
+                            $(this).next('.content').slideDown('fast');
+                            $(this).nextAll('.more:first').css('display', 'block');
+                            })
+              })
+            </script>
+        
+        
+        
+        <header id="header" class="navbar navbar-inverse navbar-static-top" role="banner">
+            <div class="container1">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-top">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="./index.html">Pink Time！</a>
+                </div>
+                <nav class="collapse navbar-collapse navbar-top navbar-right" role="navigation">
+                    <ul class="nav navbar-nav">
+                        <li  class="active"><a href="./home.html"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a></li>
+                        <li><a href="./condition.html"><span class="glyphicon glyphicon-user"></span>&nbsp;Condition</a></li>
+                        <li><a href="./Profile.html"><span class="glyphicon glyphicon-pencil"></span>&nbsp;plofile</a></li>
+                        <li><a href="./list.html"><span class="glyphicon glyphicon-envelope"></span>&nbsp;Message</a></li>
+                        <li><a href="./ranking.html"><span class="glyphicon glyphicon-tower"></span>&nbsp;Ranking</a></li>
+                        <li><a href="./photo.html"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        
+        
+        
+        <div id="header">
+            <br>
+            <div id="content-present" class="foldtl container">
+                <br><br><br><br>
+                <div class="col-xs-12 col-md-12 text-center">
+                    <h1 style="font-size:35px;">Select your favorite boy!!</h1>
+                </div>
+                <br><br><br><br><br>
+                <div id="content-present" class="container2">
+                    <%# form_for の代わりに search_form_for を使うことで検索フォームを作成 %>
+                    <%= search_form_for @q do |f| %>
+                    
+                    <%# start 特定の文字列で始まる商品名で検索 %>
+                    <%= f.label :date_eq, "日付" %>
+                    <%= f.date_select :date_eq,{start_year: 1900, include_blank: true} %>
+                    <br />
+                    
+                    <%# cont 文字列が含まれる商品説明で検索（not_cont で含まれない商品説明） %>
+                    <%= f.label :time_gteq, "開始時間" %>
+                    <%= f.time_select :time_gteq, {include_blank: true} %>
+                    <br />
+                    
+                    <%= f.label :time_lteq, "終了時間" %>
+                    <%= f.time_select :time_lteq, {include_blank: true} %>
+                    <br />
+                    
+                    <%# 関連の名前で検索 Product.carrier.name %>
+                    <%= f.label :place_eq, "場所" %>
+                    <%= f.search_field :place_cont %>
+                    <br />
+                    
+                    <%# lt で特定の数値より下で検索（gt はより上、eq は同じ、gteqやlteqなどもできる） %>
+                    <%= f.label :pepole_eq, "人数" %>
+                    <%= f.search_field :pepole_eq %>
+                    <br />
+                    
+                    
+                    
+                    <%# 検索ボタン %>
+                    <%= f.submit %>
+                    <% end %>
 
-  <%# start 特定の文字列で始まる商品名で検索 %>
-  <%= f.label :date_eq, "日付" %>
-  <%= f.date_select :date_eq,{start_year: 1900, include_blank: true} %>
-  <br />
-
-  <%# cont 文字列が含まれる商品説明で検索（not_cont で含まれない商品説明） %>
-  <%= f.label :time_gteq, "開始時間" %>
-  <%= f.time_select :time_gteq, {include_blank: true} %>
-  <br />
-
-  <%= f.label :time_lteq, "終了時間" %>
-  <%= f.time_select :time_lteq, {include_blank: true} %>
-  <br />
-
-  <%# 関連の名前で検索 Product.carrier.name %>
-  <%= f.label :place_eq, "場所" %>
-  <%= f.search_field :place_cont %>
-  <br />
-
-  <%# lt で特定の数値より下で検索（gt はより上、eq は同じ、gteqやlteqなどもできる） %>
-  <%= f.label :pepole_eq, "人数" %>
-  <%= f.search_field :pepole_eq %>
-  <br />
-
- 
-
-  <%# 検索ボタン %>
-  <%= f.submit %>
-<% end %>
-
-<hr />
-
-
-<% @products.each do |lunchrequest| %>
-  <ul class="request_body" style="list-style:none">
-    <% if lunchrequest.user.avatar_file_name != nil %>
-    <li style="float:left"><%= link_to(image_tag(lunchrequest.user.avatar.url(:medium)), "lunchrequests/#{lunchrequest.id}") %></li>
-    <% end %>
-    <li><%= lunchrequest.user.name %></li>
-    <li><%= lunchrequest.time %></li>
-    <li><%= lunchrequest.place %></li>
-    <li><%= lunchrequest.pepole %></li>
-    <li style="clear: left"></li>
-  </ul>
-<% end %>
+                    
+                    
+                    
+                    
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group" >
+                            <label for="inputName" class="col-sm-3 control-label">日付</label>
+                            <div class="col-sm-7">
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-4 col-md-2 col-lg-2" >
+                                        <select class="form-control" id="address1" name="address1" style="width:150%;">
+                                            <option value="" selected="selected">選択</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                        </select>
+                                    </div>
+                                    <h5 class="col-sm-1 col-xs-1 " style="margin-left:20px;">月</h5>
+                                    <div class="col-xs-6 col-sm-4 col-md-2 col-lg-2">
+                                        <select class="form-control" id="address1" name="address1"  style="width:150%;">
+                                            <option value="" selected="selected">選択</option>
+                                            <option value="d1">1</option>
+                                            <option value="d2">2</option>
+                                            <option value="d3">3</option>
+                                            <option value="d4">4</option>
+                                            <option value="d5">5</option>
+                                            <option value="d6">6</option>
+                                            <option value="d7">7</option>
+                                            <option value="d8">8</option>
+                                            <option value="d9">9</option>
+                                            <option value="d10">10</option>
+                                            <option value="d11">11</option>
+                                            <option value="d12">12</option>
+                                            <option value="d13">13</option>
+                                            <option value="d14">14</option>
+                                            <option value="d15">15</option>
+                                            <option value="d16">16</option>
+                                            <option value="d17">17</option>
+                                            <option value="d18">18</option>
+                                            <option value="d19">19</option>
+                                            <option value="d20">20</option>
+                                            <option value="d21">21</option>
+                                            <option value="d22">22</option>
+                                            <option value="d23">23</option>
+                                            <option value="d24">24</option>
+                                            <option value="d25">25</option>
+                                            <option value="d26">26</option>
+                                            <option value="d27">27</option>
+                                            <option value="d28">28</option>
+                                            <option value="d29">29</option>
+                                            <option value="d30">30</option>
+                                            <option value="d31">31</option>
+                                        </select>
+                                    </div>
+                                    <h5 class="col-sm-1 col-xs-1" style="margin-left:20px;">日</h5>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group" >
+                            <label for="inputName" class="col-sm-3 control-label">時間</label>
+                            <div class="col-sm-7">
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-4 col-md-2 col-lg-2" >
+                                        <select class="form-control" id="address1" name="address1" style="width:150%;">
+                                            <option value="" selected="selected">選択</option>
+                                            <option value="h8">08</option>
+                                            <option value="h9">09</option>
+                                            <option value="h10">10</option>
+                                            <option value="h11">11</option>
+                                            <option value="h12">12</option>
+                                            <option value="h13">13</option>
+                                            <option value="h14">14</option>
+                                            <option value="h15">15</option>
+                                            <option value="h16">16</option>
+                                            <option value="h17">17</option>
+                                            <option value="h18">18</option>
+                                            <option value="h19">19</option>
+                                            <option value="h20">20</option>
+                                        </select>
+                                    </div>
+                                    <h5 class="col-sm-1 col-xs-1 " style="margin-left:20px;">：</h5>
+                                    <div class="col-xs-6 col-sm-4 col-md-2 col-lg-2">
+                                        <select class="form-control" id="address1" name="address1" style="width:150%;">
+                                            <option value="" selected="selected">選択</option>
+                                            <option value="m0">00</option>
+                                            <option value="m5">05</option>
+                                            <option value="m10">10</option>
+                                            <option value="m15">15</option>
+                                            <option value="m20">20</option>
+                                            <option value="m25">25</option>
+                                            <option value="m30">30</option>
+                                            <option value="m35">35</option>
+                                            <option value="m40">40</option>
+                                            <option value="m45">45</option>
+                                            <option value="m50">50</option>
+                                            <option value="m55">55</option>
+                                        </select>
+                                    </div>
+                                    <h5 class="col-sm-1 col-xs-1 "style="margin-left:20px;">～</h5>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="inputName" class="col-sm-3 control-label">場所</label>
+                            <div class="col-sm-8">
+                                <div class="row">
+                                    <div class="col-xs-8 col-sm-6 col-md-4 col-lg-4" >
+                                        <select class="form-control" id="address1" name="address1" style="width:150%;">
+                                            <option value="" selected="selected">選択</option>
+                                            <option value="今出川">今出川キャンパス内</option>
+                                            <option value="京田辺">京田辺キャンパス内</option>
+                                            <option value="今出川1">今出川キャンパス周辺</option>
+                                            <option value="京田辺2">京田辺キャンパス周辺</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="inputName" class="col-sm-3 control-label">人数</label>
+                            <div class="col-sm-8">
+                                <div class="row">
+                                    <div class="col-xs-8 col-sm-7 col-md-4 col-lg-4" >
+                                        <input type="text" class="form-control" id="inputName" style="width:115%;">
+                                            </div>
+                                    <div class="col-xs-1 col-sm-2">
+                                        <h5>人</h5>
+                                    </div>
+                                    <div class="col-xs-4 col-sm-3"><input type="button" name="submit" style="width:80px; height:30px; margin-left:50px; margin-top:5px;" value="検索"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <hr/>
+                
+                <form class="form-horizontal" role="form">
+                    <div class="row">
+                        <div class="col-xs-2 col-sm-1"></div>
+                        <div class="col-xs-12 col-sm-11">
+                            <h4><input type="text" id="text-search" value="<検索結果>"></h4>
+                        </div>
+                    </div>
+                    
+                    <% @products.each do |lunchrequest| %>
+                    <div id="home-img1" class="col-xs-12 col-sm-3" >
+                        <img src="<%= lunchrequest.user.avatar.url(:medium) %>" class="img-responsive img-rounded img-circle" width="180" height="280" alt="" /><br>
+                        <a><%= lunchrequest.user.name %></a>
+                    </div>
+                    <% end %>
+                    <br>
+                    <div class="row">
+                        <div class="more col-xs-9 col-sm-9 text-right">
+                            <h4> もっとみる</h4>
+                        </div>
+                    </div>
+                    
+                    <br><br><br><br>
+                </form>
+            </div>
+        </div>
+        
+        <hr />
+        <footer>
+            <div class="container text-center">
+                <small>このサイトはコミュニティの場を提供するサイトです。</small>
+                <p>Copyright &copy; 2016 Hope Collective Inc. All Rights Reserved.</p>
+            </div>
+        </footer>
+        
+    </body>
+</html>
 

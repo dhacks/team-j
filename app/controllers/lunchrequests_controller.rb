@@ -14,6 +14,8 @@ class LunchrequestsController < ApplicationController
 
   def create
     Lunchrequest.create(date: lunchrequest_params[:date], time: lunchrequest_params[:time], place: lunchrequest_params[:place], pepole: lunchrequest_params[:pepole], user_id: current_user.id)
+    
+    redirect_to "/lunchrequests"
   end
 
 

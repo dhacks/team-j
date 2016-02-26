@@ -1,23 +1,169 @@
-<h1><イベント詳細></h1>
-
-日時 ： <%= @lunchrequest.date %>
-<%= @lunchrequest.time %>
-<br>
-
-場所 ： <%= @lunchrequest.place %><br>
-人数 ： <%= @lunchrequest.pepole %><br>
 
 
-<% user = User.find(@lunchrequest.user_id) %>
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                    <title>request</title>
+                    
+                    <!-- Bootstrap core CSS -->
+                    <link href="css/bootstrap.css" rel="stylesheet">
+                        
+                        <!-- Google Web Fonts CSS -->
+                        <link href="http://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet">
+                            
+                            <!-- Original CSS -->
+                            <link href="css/styles.css" rel="stylesheet">
+                                
+                                <!--[if lt IE 9]>
+                                 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+                                 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+                                 <![endif]-->
+                                
+    </head>
+    <body>
+        <header id="header" class="navbar navbar-inverse navbar-static-top" role="banner">
+            <div class="container1">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-top">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">Pink Time！</a>
+                </div>
+                <nav class="collapse navbar-collapse navbar-top navbar-right" role="navigation">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a></li>
+                        <li><a href="lunchrequests/new"><span class="glyphicon glyphicon-user"></span>&nbsp;Condition</a></li>
+                        <li><a href="users/<%= current_user.id %>"><span class="glyphicon glyphicon-pencil"></span>&nbsp;plofile</a></li>
+                        <li><a href="rankings"><span class="glyphicon glyphicon-tower"></span>&nbsp;Ranking</a></li>
+                        <li><a href="users/sign_out"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        
+        <div id="header">
+            <br>
+            <div id="content-present" class="foldtl container">
+                <br><br><br>
+                <div class="col-xs-12 col-md-12 text-center">
+                    <h2>My Favorite Boy</h2>
+                </div>
+                <br><br><br><br>
+                
+                <% user = User.find(@lunchrequest.user_id) %>
+                
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-xs-12 col-md-3 text-right">
+                        <img src="<%= @lunchrequest.user.avatar.url(:medium) %>" class="img-responsive img-rounded img-circle" width="250" height="350" alt="" style="margin-left:30px;" />
+                    </div>
+                    <div class="col-xs-12 col-md-4 text-left" >
+                        <h4 class="lead" style="margin-bottom:20px; margin-left:30px;">Boy's Profile</h4>
+                        <h4 style="margin-left:30px;">ニックネーム　:&nbsp;<%= user.name %></h4>
+                        <h4 style="margin-left:30px;">性別　　　　　:&nbsp;<%= user.sex %></h4>
+                            <h4 style="margin-left:30px;">学部　　　　　:&nbsp;<%= user.department %></h4>
+                            <h4 style="margin-left:30px;">趣味　　　　　:&nbsp;<%= user.message %></h4>
+                            </div>
+                    <div class="col-md-2"></div>
+                </div>
+                <hr/>
+                <form class="form-horizontal" role="form">
+                    <div class="form-group" style="margin-left:20px;">
+                        <label for="inputName" class="col-sm-4 control-label">日付</label>
+                        <div class="col-sm-8">
+                            <div class="row">
+                                <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2 text-center" >
+                                    <h4><% time = @lunchrequest.time %>
+                                    <%= "#{time.hour}時#{time.min}分" %></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group" style="margin-left:20px;">
+                        <label for="inputName" class="col-sm-4 control-label">場所</label>
+                        <div class="col-sm-8">
+                            <div class="row">
+                                <div class="col-xs-10 col-sm-5 col-md-4 col-lg-4 text-center" >
+                                    <h4><%= @lunchrequest.place %></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group" style="margin-left:20px;">
+                        <label for="inputName" class="col-sm-4 control-label">人数</label>
+                        <div class="col-sm-8">
+                            <div class="row">
+                                <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2 text-center" >
+                                    <h4><%= @lunchrequest.pepole %></h4>
+                                </div>
+                                <h5 class="col-sm-1 col-xs-1 " >人</h5>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group" style="margin-left:20px;">
+                        <label for="inputName" class="col-sm-4 control-label">上限金額</label>
+                        <div class="col-sm-8">
+                            <div class="row">
+                                <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2 text-center" >
+                                    <h4>2000</h4>
+                                </div>
+                                <h5 class="col-sm-1 col-xs-1 " >円</h5>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="form-group" style="margin-left:20px;">
+                        <label for="inputComment" class="control-label col-sm-4">メッセージ</label>
+                        <div class="col-sm-8">
+                            <div class="row">
+                                <div class="col-sm-7 col-xs-11">
+                                    <textarea class="form-control" rows="3" placeholder="大好き。"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <hr/>
+                    <br>
+                    
+                    
+                    <!--   追加
+                     
+                     -->
 
-  <h2><%= user.name %>さんのプロフィール</h2>
-
-   <%= image_tag user.avatar.url(:medium) %>
-   <p><%= user.sex %></p>
-     <p><%= user.department %></p>
-      <p><%= user.message %></p>
-
-
-
-<!--   追加         -->
-<%= link_to "Chatを開始", chat_path(:man_id => user.id, :woman_id => current_user.id) %>
+                    <div class="form-group" style="margin-right:10px;">
+                        <div class="col-sm-12 text-center">
+                            <button type="submit" class="btn btn-success btn-lg"><%= link_to "Chatを開始", chat_path(:man_id => user.id, :woman_id => current_user.id) %></button>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                </form>
+            </div>
+        </div>
+        
+        <hr />
+        <footer>
+            <div class="container text-center">
+                <small>このサイトはコミュニティの場を提供するサイトです。</small>
+                <p>Copyright &copy; 2016 Hope Collective Inc. All Rights Reserved.</p>
+            </div>
+        </footer>
+        <br>
+        <br>
+        
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+        
+        
+    </body>
+</html>

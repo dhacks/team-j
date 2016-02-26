@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
 # データベースに1足して、更新する作業
   def increment_like!
+    like = 0 if like == nil
     incremented_like = like + 1
     update({like: incremented_like})
   end

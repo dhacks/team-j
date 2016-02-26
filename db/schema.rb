@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225170206) do
+ActiveRecord::Schema.define(version: 20160226030257) do
 
   create_table "chats", force: :cascade do |t|
     t.integer  "man_id",     limit: 4

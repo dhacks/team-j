@@ -1,5 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>condition</title>
 
-<h1>プロフィール</h1>
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap.css" rel="stylesheet">
+
+<!-- Google Web Fonts CSS -->
+<link href="http://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet">
+
+<!-- Original CSS -->
+<link href="css/styles.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+<header id="header" class="navbar navbar-inverse navbar-static-top" role="banner">
+<div class="container1">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-top">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="/">Pink Time！</a>
+</div>
+<nav class="collapse navbar-collapse navbar-top navbar-right" role="navigation">
+<ul class="nav navbar-nav">
+<li><a href="/"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a></li>
+<li><a href="/lunchrequests/new"><span class="glyphicon glyphicon-user"></span>&nbsp;Condition</a></li>
+<li class="active"><a href="/users/<%= current_user.id %>"><span class="glyphicon glyphicon-pencil"></span>&nbsp;plofile</a></li>
+<li><a href="./list.html"><span class="glyphicon glyphicon-envelope"></span>&nbsp;Message</a></li>
+<li><a href="/rankings"><span class="glyphicon glyphicon-tower"></span>&nbsp;Ranking</a></li>
+<li><a href="/users/sign_out"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Logout</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+
+<div id="header">
+<br>
+<div id="content-present" class="foldtl container text-center">
+
+<h3>プロフィール</h3>
 
 <h2>名前： <%= current_user.name %></h2>
 
@@ -60,4 +111,7 @@
 <li style="clear:left"></li>
 </ul>
 
-        <br><br>
+</div>
+</div>
+
+

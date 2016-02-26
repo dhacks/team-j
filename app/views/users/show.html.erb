@@ -1,7 +1,8 @@
 
-    <!-- <p><%= @nickname %>さんの投稿一覧</p> -->
+<h1>プロフィール</h1>
 
-    <p>プロフィールの表示だぜ〜〜〜〜</p>
+<h2>名前： <%= current_user.name %></h2>
+
 
 <!-- ログインしている人にはプロフィール編集リンク表示する -->
     <% if current_user.id == @user.id %>
@@ -10,22 +11,53 @@
       </div>
     <% end %>
 
+    <br>
+
 <!--アヴァター -->
     <!--<div class="image" style="background-image: url(<%= @user.avatar.url(:medium) %>);"></div>-->
 
     <img src="<%= @user.avatar.url(:medium) %>">
+    <% if current_user.sex == 0 %>
+        <h4>性別： 男</h4>
+    <% else %>
+        <h4>性別： 女</h4>
+    <% end %>
+    <h4>学部： <%= current_user.department %></h4>
+    <h4>めっせーじ：</h4>
+        <div class='profmessage'><%= current_user.message %></div>
 
+<br>
+<hr>
 
-
-
-    <h2><%= "#{@user.name}" %><span><%= "#{@user.sex}" %></span><span><%= "#{@user.department}" %></span><span><%= "#{@user.message}" %></span></h2>
-  </div>
+<h3><%= current_user.name %>さんの投稿一覧</h3>
 
 <% @lunchrequests.each do |lunchrequest| %>
-    <p><%= lunchrequest.date %></p>
-    <p><%= lunchrequest.time %></p>
-    <p><%= lunchrequest.place %></p>
-    <p><%= lunchrequest.pepole %></p>
-    <% end %>
-    
+<ul class="request_body" style="list-style:none">
+    <li><%= lunchrequest.time %></li>
+    <li><%= lunchrequest.place %></li>
+    <li><%= lunchrequest.pepole %></li>
+    <li style="clear: left"></li>
+</ul>
+<% end %>
 
+<br><br>
+<hr>
+
+<h3><%= current_user.name %>さんのちゃっと一覧</h3>
+<ul style="list-style:none">
+<% @rooms.each do |room| %>
+<li style="float:left">
+    <ul style="list-style:none">
+<li>
+    <%= link_to room.name, chat_path(:man_id => room.id, :woman_id => current_user.id) %>
+</li>
+<li style="width=100px;height=100px">
+    <%= link_to(image_tag(room.avatar.url(:medium)), chat_path(:man_id => room.id, :woman_id => current_user.id)) %>
+</li>
+</ul>
+</li>
+<% end %>
+<li style="clear:left"></li>
+</ul>
+
+        <br><br>

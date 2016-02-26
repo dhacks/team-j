@@ -5,10 +5,11 @@
      <h3>
       投稿する
     </h3>
-    <input type="date" name="date">
-    <input type="time" name="time">
-    <input type="string" name="place">
-    <input type="integer" name="people">
-      <input type="submit">
+    <label>日時</label> : <input type="date" name="date"><input type="time" name="time"><br>
+    <label>場所</label> : <input type="string" name="place"><br>
+    <label>人数</label> : <input type="integer" name="pepole"><br>
+<%= datetime_select(:user, :meeting_time) %>
+<input id="user_meeting_time" name="user[meeting_time]" type="datetime_select" />
+    <input type="submit">
     <% end %>
   </div>

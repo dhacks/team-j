@@ -3,6 +3,9 @@ class UsersController < ApplicationController
 def show
     @user = User.find(params[:id])
     @lunchrequests = Lunchrequest.where(user_id: current_user.id).order("created_at DESC")
+    #カレントゆーざとChatしていた人のユニークなidを配列で取得し，Userもでるを返す
+    @rooms = User.find(Chat.where(woman_id: current_user.id).select(:man_id).distinct.pluck(:man_id))
+    
   end
 
   def edit

@@ -1,27 +1,23 @@
+<h1><イベント詳細></h1>
 
-
-<br><br><br>
-  <p>--------------------------------------</p>
-  <p>-------------イベント詳細ページだよん-------------------</p>
-
-
-
-  <p><イベント詳細></p>
-
-<%= @lunchrequest.date %>
+日時 ： <%= @lunchrequest.date %>
 <%= @lunchrequest.time %>
-<%= @lunchrequest.place %>
-<%= @lunchrequest.pepole %>
+<br>
+
+場所 ： <%= @lunchrequest.place %><br>
+人数 ： <%= @lunchrequest.pepole %><br>
 
 
-  <p><〇〇さんのプロフィール></p>
+<% user = User.find(@lunchrequest.user_id) %>
 
-  <% user = User.find(@lunchrequest.user_id) %>
+  <h2><%= user.name %>さんのプロフィール</h2>
 
-
-   <p><%= user.name %></p>
    <%= image_tag user.avatar.url(:medium) %>
    <p><%= user.sex %></p>
      <p><%= user.department %></p>
       <p><%= user.message %></p>
-      
+
+
+
+<!--   追加         -->
+<%= link_to "Chatを開始", chat_path(:man_id => user.id, :woman_id => current_user.id) %>

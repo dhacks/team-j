@@ -8,8 +8,9 @@
       </div>
       <h2>登録情報</h2>
           <%= f.text_field :name, placeholder: "名前", class: "form-control" %>
-          <%= f.text_field :sex, placeholder: "性別", class: "form-control" %>
-          <%= f.text_field :department, placeholder: "学部", class: "form-control" %>
+<label><%= f.radio_button :sex, "0" %>男</label>
+<label><%= f.radio_button :sex, "1" %>女</label>
+<%= f.text_field :department, placeholder: "学部", class: "form-control" %>
           <%= f.text_field :message, placeholder: "趣味", class: "form-control" %>
 
         <%= f.submit "送信", class: "btn btn-primary withripple" %>

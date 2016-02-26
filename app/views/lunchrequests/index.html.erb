@@ -1,13 +1,3 @@
-  <p>----------------------------------------------</p>
-
-<% unless current_user.full_profile? %>
-    <h2>まずは、あなたの基本プロフィールを登録しましょう！</h2>
-    <%= link_to "プロフィールを登録する", edit_user_path(current_user), { class: "btn btn-lg btn-primary withripple" } %>
-  <% else %>
-
-<% end %>
-
-
 
 <%# form_for の代わりに search_form_for を使うことで検索フォームを作成 %>
 <%= search_form_for @q do |f| %>
@@ -44,28 +34,17 @@
 
 <hr />
 
-<table>
 
-
-
-
-
-
-
-  <% @products.each do |lunchrequest| %>
-    <p><%= lunchrequest.user_id %></p>
-    <p><%= lunchrequest.date %></p>
-    <p><%= lunchrequest.time %></p>
-    <p><%= lunchrequest.place %></p>
-    <p><%= lunchrequest.pepole %></p>
-    <p><%= lunchrequest.user %></p>
-    <% if !lunchrequest.user_id.nil? %>
-      <% user = User.find(lunchrequest.user_id) %>
-
-<%= link_to(image_tag(user.avatar.url(:medium)), "lunchrequests/#{lunchrequest.id}") %>
-
-
-      <p><%= image_tag user.avatar.url(:medium) %></p>
+<% @products.each do |lunchrequest| %>
+  <ul class="request_body" style="list-style:none">
+    <% if lunchrequest.user.avatar_file_name != nil %>
+    <li style="float:left"><%= link_to(image_tag(lunchrequest.user.avatar.url(:medium)), "lunchrequests/#{lunchrequest.id}") %></li>
     <% end %>
-  <% end %>
-</div>
+    <li><%= lunchrequest.user.name %></li>
+    <li><%= lunchrequest.time %></li>
+    <li><%= lunchrequest.place %></li>
+    <li><%= lunchrequest.pepole %></li>
+    <li style="clear: left"></li>
+  </ul>
+<% end %>
+

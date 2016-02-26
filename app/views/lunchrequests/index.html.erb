@@ -266,8 +266,9 @@
                     
                     <% @products.each do |lunchrequest| %>
                     <div id="home-img1" class="col-xs-12 col-sm-3" >
-                        <img src="<%= lunchrequest.user.avatar.url(:medium) %>" class="img-responsive img-rounded img-circle" width="180" height="280" alt="" /><br>
+                        <%= link_to(image_tag(lunchrequest.user.avatar.url(:medium), { :class => "img-responsive img-rounded img-circle", :width => "180", :height => "180", :alt => "" }), "lunchrequests/#{lunchrequest.id}") %><br>
                         <a><%= lunchrequest.user.name %></a>
+
                     </div>
                     <% end %>
                     <br>
